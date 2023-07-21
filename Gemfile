@@ -33,6 +33,9 @@ gem "redis", "~> 4.0"
 # Use money for handle balances
 gem 'money-rails', '~> 1.15'
 
+#reder html with haml
+gem 'haml', '~> 6.1', '>= 6.1.1'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
