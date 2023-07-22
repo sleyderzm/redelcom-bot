@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_020845) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_023046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_020845) do
     t.string "validation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "attribute_name"
     t.index ["next_option_id"], name: "index_chat_options_on_next_option_id"
   end
 
