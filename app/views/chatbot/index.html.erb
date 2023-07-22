@@ -5,7 +5,7 @@
         <!-- Contenido del chat aquí -->
         <%= render partial: 'title_message' %>
         <% @main_options.each do |option| %>
-          <%= render partial: 'bot_message', locals: { option: option } %>
+          <%= render partial: 'bot_message', locals: { bot_message: (option.alias ? "#{option.alias}) " : "") + option.text } %>
         <% end %>
       </div>
     <% end %>

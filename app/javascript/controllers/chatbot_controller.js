@@ -3,28 +3,46 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ['messageInput'];
 
-  connect() {
-    // Obtener el id del objeto @conversation
-    //const conversationId = this.element.dataset.conversationId;
-    const conversationId = '6';
+  conversationId = null;
+  csrfToken = null
 
-    // Hacer algo con el id
-    console.log("Id del objeto @conversation:", conversationId);
+  connect() {
+    //TODO: descomentar
+    //this.conversationId = this.element.dataset.conversationId;
+    this.conversationId = '6';
+    this.csrfToken = document.head.querySelector('[name=csrf-token]').content;
   }
   sendMessage() {
     const message = this.messageInputTarget.value;
     this.messageInputTarget.value = ''
-    const csrfToken = document.head.querySelector('[name=csrf-token]').content;
-    fetch('/chatbot/received_user_message', {
+    this.renderUserMessage(message)
+    this.renderBotResponse(message, this.conversationId)
+  }
+
+  renderUserMessage(message){
+    fetch('/chatbot/render_user_message', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-Token': csrfToken,
+        'X-CSRF-Token': this.csrfToken,
       },
       body: JSON.stringify({ message: message })
+    }).then(response => response.text()).then(Turbo.renderStreamMessage);
+  }
+  renderBotResponse(message, conversationId){
+    fetch('/chatbot/render_bot_response', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': this.csrfToken,
+      },
+      body: JSON.stringify({ message: message, conversation_id: conversationId })
     }).then(response => response.text()).then(Turbo.renderStreamMessage);
   }
 }

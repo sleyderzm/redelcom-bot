@@ -29,21 +29,24 @@ if ChatOption.count.zero?
     text: 'Cuantos rollos desea encargar?',
     action: 'CreatePurchase',
     validation: 'ValidateNumber',
-    next_option_id: nil
+    next_option_id: nil,
+    attribute_name: 'number'
   )
 
   step2 = ChatOption.create(
     text: 'Direccion del envio?',
     action: nil,
     validation: 'ValidateAddress',
-    next_option: step3
+    next_option: step3,
+    attribute_name: 'address'
   )
 
   step1 = ChatOption.create(
     text: 'Cúal es el RUT de tu compañia?',
     action: nil,
     validation: 'ValidateRut',
-    next_option: step2
+    next_option: step2,
+    attribute_name: 'rut'
   )
 
   ChatOption.create(
@@ -59,19 +62,21 @@ if ChatOption.count.zero?
     action: 'GetDeposit',
     validation: 'ValidateDate',
     next_option: nil,
+    attribute_name: 'date'
   )
 
   step1 = ChatOption.create(
     text: 'Cúal es el RUT de tu compañia?',
     action: nil,
     validation: 'ValidateRut',
-    next_option: step2
+    next_option: step2,
+    attribute_name: 'rut'
   )
 
   ChatOption.create(
     text: 'Consulta de Depósito',
     action: nil,
-    validation: 'nil',
+    validation: nil,
     next_option: step1,
     alias: 1
   )
