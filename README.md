@@ -8,7 +8,7 @@
 
 * Las credenciales del proyecto estan encriptadas con Rails credentials 
 (https://edgeguides.rubyonrails.org/security.html#custom-credentials), debe agregar el archivo ```config/master.key``` 
-para obtener las credenciales encriptadas, aunque no deberia ;). para 
+para obtener las credenciales encriptadas. Aunque no deberia ;) para 
 facilitar la configuracion dejo a continuacion la clave de encriptacion de las credenciales.
 ```
 d1a2301ef7cc028c04ba6838ee0790cf
@@ -62,3 +62,5 @@ rut         deposito
 ```
 Cuando se inicia el chat se crea un objeto de tipo ```Conversation```, ahi se almacenan las respuestas
 dadas por el usuario.
+
+No entendi muy bien el funcionamiento del deposito. el enunciado no era muy claro al respecto. 
