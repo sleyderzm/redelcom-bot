@@ -36,7 +36,7 @@ module ChatbotAction
         total: current_purchase_total
       )
 
-      "Tu compra ha tenido un precio de #{current_purchase_total.currency.iso_code} #{current_purchase_total.to_s}"
+      "Tu compra de #{quantity_to_purchase}*'#{product.name}' ha tenido un precio de #{current_purchase_total.currency.iso_code} #{current_purchase_total.to_s} y será enviada a #{address}"
     end
   end
 end
