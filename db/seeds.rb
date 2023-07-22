@@ -8,7 +8,7 @@
 if Customer.count.zero?
   Customer.create([
     {rut: '12345678', name: 'Sleyder Z S.A.S.', balance: Money.new(1_000_00, 'USD')},
-    {rut: '87654321', name: 'REDELCOM', balance: Money.new(1_000_00, 'USD')}
+    {rut: '87654321', name: 'REDELCOM', balance: Money.new(10_000_00, 'USD')}
   ])
 end
 
