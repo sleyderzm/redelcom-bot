@@ -30,7 +30,7 @@ if ChatOption.count.zero?
     action: 'CreatePurchase',
     validation: 'ValidateNumber',
     next_option_id: nil,
-    attribute_name: 'number'
+    attribute_name: ChatOption::ATTRIBUTES[:number]
   )
 
   step2 = ChatOption.create(
@@ -38,7 +38,7 @@ if ChatOption.count.zero?
     action: nil,
     validation: 'ValidateAddress',
     next_option: step3,
-    attribute_name: 'address'
+    attribute_name: ChatOption::ATTRIBUTES[:address]
   )
 
   step1 = ChatOption.create(
@@ -46,7 +46,7 @@ if ChatOption.count.zero?
     action: nil,
     validation: 'ValidateRut',
     next_option: step2,
-    attribute_name: 'rut'
+    attribute_name: ChatOption::ATTRIBUTES[:rut]
   )
 
   ChatOption.create(
@@ -62,7 +62,7 @@ if ChatOption.count.zero?
     action: 'GetDeposit',
     validation: 'ValidateDate',
     next_option: nil,
-    attribute_name: 'date'
+    attribute_name: ChatOption::ATTRIBUTES[:date]
   )
 
   step1 = ChatOption.create(
@@ -70,7 +70,7 @@ if ChatOption.count.zero?
     action: nil,
     validation: 'ValidateRut',
     next_option: step2,
-    attribute_name: 'rut'
+    attribute_name: ChatOption::ATTRIBUTES[:rut]
   )
 
   ChatOption.create(

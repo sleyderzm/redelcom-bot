@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_023046) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_190300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_023046) do
     t.text "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "attribute_name"
     t.index ["chat_option_id"], name: "index_conversation_answers_on_chat_option_id"
     t.index ["conversation_id"], name: "index_conversation_answers_on_conversation_id"
   end
@@ -84,6 +85,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_023046) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.string "address"
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.date "purchase_date"
+    t.integer "total_cents", default: 0, null: false
+    t.string "total_currency", default: "USD", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_purchases_on_customer_id"
+    t.index ["product_id"], name: "index_purchases_on_product_id"
+  end
+
   add_foreign_key "chat_options", "chat_options", column: "next_option_id"
   add_foreign_key "conversation_answers", "chat_options"
   add_foreign_key "conversation_answers", "conversations"
@@ -92,4 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_023046) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "customers"
+  add_foreign_key "purchases", "customers"
+  add_foreign_key "purchases", "products"
 end

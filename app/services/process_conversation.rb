@@ -23,8 +23,9 @@ class ProcessConversation
 
     conversation.conversation_answers.create(
       chat_option: current_option,
-      answer: message
-    )
+      answer: message,
+      attribute_name: current_option.attribute_name
+    ) if current_option.attribute_name
 
     if current_option.action
       conversation.update(finished: true)
