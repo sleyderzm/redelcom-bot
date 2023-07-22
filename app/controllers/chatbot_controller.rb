@@ -15,7 +15,7 @@ class ChatbotController < ApplicationController
 
     #get current conversation
     conversation = Conversation.find(params[:conversation_id])
-    if conversation.nil?
+    if conversation.nil? || conversation.finished
       return_error_message
       return
     end
