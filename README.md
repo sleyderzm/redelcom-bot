@@ -44,7 +44,7 @@ Para encontrar el chat debe ir a:
 ``` 
 
 El chat esta construido con TailwindCSS (https://tailwindcss.com/), Stimulus.js y Turbo (https://stimulus.hotwired.dev/)
-Cuando un usuario envia un mensaje se renderiza y se procesa la respuesta usando TurboStream para obtimizar la carga
+Cuando un usuario envia un mensaje se renderiza y se procesa la respuesta usando TurboStream para optimizar la carga
 de la pagina.
 
 Las opciones que responde el chat ```ChatOption``` estan diseñadas usando una estructura
