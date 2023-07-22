@@ -10,16 +10,13 @@ module ChatbotAction
       address = get_answer(conversation, ChatOption::ATTRIBUTES[:address])
       return error_message if address.nil? || address.blank?
 
-      address = get_answer(conversation, ChatOption::ATTRIBUTES[:address])
-      return error_message if address.nil? || address.blank?
-
       quantity_to_purchase = get_answer(conversation, ChatOption::ATTRIBUTES[:number])
       return error_message if address.nil? || address.blank?
 
       product = Product.where(name: 'Rollos de Papel').first
       purchase_date = Date.current + 1.day
 
-      current_purchase_total = product.price * quantity_to_purchase
+      current_purchase_total = product.price * quantity_to_purchase.to_i
 
       previous_purchases = Purchase.where(customer: customer, purchase_date: purchase_date)
 
