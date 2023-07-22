@@ -1,12 +1,12 @@
-<div class="flex items-center justify-center h-screen" data-controller="chatbot">
+<div class="flex items-center justify-center h-screen" data-controller="chatbot" data-conversation-id="<%= @conversation.id %>">
   <div class="chat-container w-3/4 border shadow-lg p-4">
     <%= turbo_frame_tag 'messages' do %>
       <div class="chat-messages">
         <!-- Contenido del chat aquí -->
         <%= render partial: 'title_message' %>
-        <%= render partial: 'bot_message', locals: { message: '1) Consulta de Depósito' } %>
-        <%= render partial: 'bot_message', locals: { message: '2) Realizar Solicitud Rollos de Papel' } %>
-        <%= render partial: 'bot_message', locals: { message: '3) Consulta Indicadores Económicos' } %>
+        <% @main_options.each do |option| %>
+          <%= render partial: 'bot_message', locals: { option: option } %>
+        <% end %>
       </div>
     <% end %>
 

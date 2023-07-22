@@ -2,6 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ['messageInput'];
+
+  connect() {
+    // Obtener el id del objeto @conversation
+    //const conversationId = this.element.dataset.conversationId;
+    const conversationId = '6';
+
+    // Hacer algo con el id
+    console.log("Id del objeto @conversation:", conversationId);
+  }
   sendMessage() {
     const message = this.messageInputTarget.value;
     this.messageInputTarget.value = ''

@@ -15,3 +15,65 @@ end
 if Product.count.zero?
   Product.create(name: 'Rollos de Papel', price: Money.new(700_00, 'USD'))
 end
+
+if ChatOption.count.zero?
+  ChatOption.create(
+    text: 'Consulta Indicadores Económicos',
+    action: 'EconomicIndicators',
+    validation: nil,
+    next_option_id: nil,
+    alias: 3
+  )
+
+  step3 = ChatOption.create(
+    text: 'Cuantos rollos desea encargar?',
+    action: 'CreatePurchase',
+    validation: 'ValidateNumber',
+    next_option_id: nil
+  )
+
+  step2 = ChatOption.create(
+    text: 'Direccion del envio?',
+    action: nil,
+    validation: 'ValidateAddress',
+    next_option: step3
+  )
+
+  step1 = ChatOption.create(
+    text: 'Cúal es el RUT de tu compañia?',
+    action: nil,
+    validation: 'ValidateRut',
+    next_option: step2
+  )
+
+  ChatOption.create(
+    text: 'Realizar Solicitud Rollos de Papel',
+    action: nil,
+    validation: nil,
+    next_option: step1,
+    alias: 2
+  )
+
+  step2 = ChatOption.create(
+    text: 'Cúal es la fecha de despacho? dd-mm-yyyy',
+    action: 'GetDeposit',
+    validation: 'ValidateDate',
+    next_option: nil,
+  )
+
+  step1 = ChatOption.create(
+    text: 'Cúal es el RUT de tu compañia?',
+    action: nil,
+    validation: 'ValidateRut',
+    next_option: step2
+  )
+
+  ChatOption.create(
+    text: 'Consulta de Depósito',
+    action: nil,
+    validation: 'nil',
+    next_option: step1,
+    alias: 1
+  )
+
+end
