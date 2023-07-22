@@ -8,8 +8,8 @@ export default class extends Controller {
 
   connect() {
     //TODO: descomentar
-    //this.conversationId = this.element.dataset.conversationId;
-    this.conversationId = '6';
+    this.conversationId = this.element.dataset.conversationId;
+    //this.conversationId = '6';
     this.csrfToken = document.head.querySelector('[name=csrf-token]').content;
   }
   sendMessage() {

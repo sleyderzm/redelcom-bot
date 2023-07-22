@@ -2,8 +2,8 @@ class ChatbotController < ApplicationController
   include ChatbotHelper
   def index
     #TODO: descomentar
-    ##@conversation = Conversation.create
-    @conversation = Conversation.find(6)
+    @conversation = Conversation.create
+    #@conversation = Conversation.find(6)
     @main_options = ChatOption.where.not(alias: nil).order(:alias)
   end
   def render_user_message

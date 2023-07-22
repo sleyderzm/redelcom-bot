@@ -17,7 +17,7 @@ class ProcessConversation
 
     current_option = conversation.current_option
 
-    unless is_valid_input?(current_option, message, conversation)
+    unless is_valid_input?(current_option, message)
       return  "El valor seleccionado es invalido, " +  current_option.text
     end
 
@@ -37,9 +37,9 @@ class ProcessConversation
 
   private
 
-  def self.is_valid_input?(option, message, conversation)
+  def self.is_valid_input?(option, message)
     return true unless option.validation
-    "#{VALIDATION_MODULE}#{option.validation}".constantize.valid?(message, conversation)
+    "#{VALIDATION_MODULE}#{option.validation}".constantize.valid?(message)
   end
   def self.get_action_message(option, conversation)
     "#{ACTION_MODULE}#{option.action}".constantize.perform(conversation)
